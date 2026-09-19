@@ -79,6 +79,3 @@ A charge-only USB cable looks identical to a working one until you check. The LE
 
 Arch has no `plugdev` group, which the stock udev rule expects. This repo's rule sets a permissive mode instead.
 
-## License
-
-MIT. See LICENSE.
