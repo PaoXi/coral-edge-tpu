@@ -20,7 +20,7 @@ MODELS = {
 }
 BASE = "https://github.com/google-coral/test_data/raw/master"
 N = 100
-HERE = pathlib.Path(__file__).parent
+HERE = pathlib.Path(__file__).resolve().parent.parent
 
 
 def ensure_models():

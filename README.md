@@ -41,10 +41,38 @@ Then plug the Accelerator in and run the benchmark.
 ## Benchmark
 
 ```bash
-./.venv/bin/python benchmark.py
+./.venv/bin/python src/benchmark.py
 ```
 
 It runs the same network twice: once compiled for the Edge TPU, once not. The difference tells you whether the delegate is really doing anything. If the TPU numbers look like the CPU numbers, you've silently fallen back to software.
+
+## Detections
+
+A number is easy to fake. A picture of a labelled box is not.
+
+```bash
+./.venv/bin/python src/infer_image.py results/cat.bmp
+```
+
+It draws the boxes on a copy and writes it next to the input. Output for the three sample images in `results/`:
+
+| image | what it found |
+| --- | --- |
+| cat.bmp | cat, 96% |
+| bird.bmp | bird, 98% |
+| grace_hopper.bmp | person 77%, tie 77% |
+
+![grace hopper with detection boxes](results/grace_hopper_detected.png)
+
+## Layout
+
+```
+install.sh          runtime + udev + Python env
+src/benchmark.py    Edge TPU vs CPU, same network
+src/infer_image.py  draw detections on an image
+models/             the compiled and uncompiled networks, plus COCO labels
+results/            sample inputs and the annotated output
+```
 
 ## Numbers
 
